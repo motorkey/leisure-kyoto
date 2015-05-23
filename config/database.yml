@@ -51,5 +51,3 @@ test:
 production:
   <<: *default
   database: leisure_production
-  username: motoki 
-  password: strong

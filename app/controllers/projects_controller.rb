@@ -6,4 +6,8 @@ class ProjectsController < ApplicationController
     @projects = Project.where(date: 0)
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
 end

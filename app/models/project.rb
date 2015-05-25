@@ -1,3 +1,3 @@
 class Project < ActiveRecord::Base
-  has_many :dates, class_name: 'EventDate'
+  has_many :dates, class_name: 'ProjectDate'
 end

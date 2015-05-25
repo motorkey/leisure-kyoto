@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   def index
     #️ ここにtomorrowとthe day afterどっちをクリックしたかをわけるif文を入れよ
 
-    @projects = Project.dates.where(date: 2015/6/15)
+    @projects = Project.all
   end
 
   def show

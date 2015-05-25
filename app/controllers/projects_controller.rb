@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
 
   def index
-    #️ ここにtomorrowとthe day afterどっちをクリックしたかをわけるif文を入れよ
-
-    @projects = Project.all
+    @day = params[:day]
+    # ?????
+    @projects = Project.joins(:project_date).merge(ProjectDate.where(date: @day))
   end
 
   def show

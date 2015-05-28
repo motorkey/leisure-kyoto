@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_on: 2015-05-28
+  event_id: 
+
+two:
+  event_on: 2015-05-28
+  event_id: 

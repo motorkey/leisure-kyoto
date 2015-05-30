@@ -13,6 +13,10 @@
       = f.label :name, 'Name'
       = f.text_field :name, :class => 'form-control'
     div.form-group
+      = f.label :image, 'Image'
+      div.well
+        = f.file_field :image
+    div.form-group
       = f.label :description, 'Description'
       = f.text_field :description, :class => 'form-control'
     div.form-group

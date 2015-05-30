@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-
   resources :pages
-  resources :events
-
+  resources :events, only: [:index, :show]
   namespace :admin do
     root to: 'pages#top'
+  end
+  scope :admin do
+    resources :events, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

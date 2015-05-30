@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title 管理画面 | Leisure 
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    meta name='viewport' content='initial-scale=1.0, minimum-scale=1.0, maximun-scale=1.0, user-scalable=no'
+    meta charset='utf-8'
+    meta name='description' content='Leisureのスタッフのための画面です'
+    //= render 'front/shared/head'
+  body
+    div
+      //.admin-layouts-base
+      div
+        //.admin-layouts-main
+        div.container
+          div.logo.navbar-header.pull-left
+            = link_to '管理画面', admin_root_path, :class => 'navbar-brand'
+          ul.navMenu.nav.navbar-nav.navbar-right.pull-right
+            li
+              p ログアウト
+        div.container
+          div.row
+            div.col-sm-2
+              div.list-group
+                = link_to 'ホーム', admin_root_path, :class => 'list-group-item'
+                = link_to 'イベント管理', admin_root_path, :class => 'list-group-item'
+            = yield
+   

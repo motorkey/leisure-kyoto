@@ -25,6 +25,6 @@ html
             div.col-sm-2
               div.list-group
                 = link_to 'ホーム', admin_root_path, :class => 'list-group-item'
-                = link_to 'イベント管理', admin_root_path, :class => 'list-group-item'
+                = link_to 'イベント管理', new_event_path, :class => 'list-group-item'
             = yield
    

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   def index
     @day = params[:day]
     # ?????
-    @events = Event.joins(:event_day).merge(EventDay.where(event_on: @day))
+    @events = Event.joins(:days).merge(EventDay.where(event_on: @day))
   end
   def show
     @event = Event.find(params[:id])
@@ -11,6 +11,10 @@ class EventsController < ApplicationController
     @event = Event.new
   end
   def create
+
+    puts '=======!!!!!!============='
+    puts event_params
+
     @event = Event.new(event_params)
     respond_to do |format|
       if @event.save

@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
-  has_many :event_days
-  has_many :event_photos
+  has_many :days, class_name: 'EventDay'
+  has_many :photos, class_name: 'EventPhoto'
 end

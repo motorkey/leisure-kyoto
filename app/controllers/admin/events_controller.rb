@@ -1,17 +1,19 @@
-class EventsController < ApplicationController
+class Admin::EventsController < ApplicationController
   def index
     @day = params[:day]
     @events = Event.joins(:days).merge(EventDay.where(event_on: @day))
   end
   def new
     @event = Event.new
+    3.times { @event.photos.build }
   end
   def create
-    @event = Event.new(event_params)
-    @event.save
-
-    @photo = EventPhoto.new(photo_params)
-    @photo.save
+    @event = Event.create(event_params)
+    params[:event][:photos_attributes].each do |key, photo_attributes|
+      @event.photos.create(photo_attributes.permit(:image))
+    end
+    #@photo = EventPhoto.new(photo_params)
+    #@photo.save
     #respond_to do |format|
       #if @event.save
         #format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -27,10 +29,10 @@ class EventsController < ApplicationController
   end
   private
     def event_params
-      params.require(:event).permit(:name, :description, photos: [:image])
+      params.require(:event).permit(:name, :description)
     end
-    def photo_params
-      params.require(:event_photo).permit(:image)
-    end
+    #def photo_params
+      #params.require(:event_photo).permit(:image)
+    #end
 end
 

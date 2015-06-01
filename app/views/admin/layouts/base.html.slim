@@ -16,7 +16,7 @@ html
         //.admin-layouts-main
         div.container
           div.logo.navbar-header.pull-left
-            = link_to '管理画面', admin_root_path, :class => 'navbar-brand'
+            = link_to '管理画面', admin_root_path, class: 'navbar-brand'
           ul.navMenu.nav.navbar-nav.navbar-right.pull-right
             li
               p ログアウト
@@ -24,7 +24,8 @@ html
           div.row
             div.col-sm-2
               div.list-group
-                = link_to 'ホーム', admin_root_path, :class => 'list-group-item'
-                = link_to 'イベント管理', new_event_path, :class => 'list-group-item'
+                = link_to 'ホーム', admin_root_path, class: 'list-group-item'
+                = link_to 'イベント追加', new_admin_event_path, class: 'list-group-item'
+                = link_to 'イベント一覧', admin_events_path, class: 'list-group-item'
             = yield
    

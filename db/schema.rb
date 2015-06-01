@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 20150529021654) do
   add_index "event_days", ["event_id"], name: "index_event_days_on_event_id", using: :btree
 
   create_table "event_photos", force: :cascade do |t|
-    t.integer  "event_id",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "image",      limit: 255
+    t.integer  "event_id",   limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "events", force: :cascade do |t|

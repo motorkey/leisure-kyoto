@@ -1,4 +1,4 @@
-class Admin::EventsController < ApplicationController
+class Admin::EventsController < AdminController
   def index
     @day = params[:day]
     @events = Event.joins(:days).merge(EventDay.where(event_on: @day))

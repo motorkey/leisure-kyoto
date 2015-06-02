@@ -1,7 +1,6 @@
 class Admin::EventsController < AdminController
   def index
     @events = Event.all
-    binding.pry
   end
   def new
     @event = Event.new

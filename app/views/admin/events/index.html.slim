@@ -10,7 +10,7 @@
         tr
           td
             - if event.photos[0]
-              = image_tag event.photos[0].image_url
+              = image_tag event.photos[0].image.thumb.url
           td
             dl
               dt 著者

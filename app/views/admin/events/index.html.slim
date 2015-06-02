@@ -19,6 +19,8 @@
               dd = event.id
               dt 名前
               dd = event.name
+          td
+            = link_to '編集', edit_admin_event_path(event.id), class: 'btn btn-default'
   nav
     ul.pagination
       ul.pagination

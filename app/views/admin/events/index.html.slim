@@ -6,15 +6,19 @@
         th
         th 情報
         th
-      tr
-        td
-        td
-          dl
-            dt 著者
-            dd mitsuyori
-            dt ID
-            dd 15
-            dt タイトル
+      - @events.each do |event|
+        tr
+          td
+            - if event.photos[0]
+              = image_tag event.photos[0].image_url
+          td
+            dl
+              dt 著者
+              dd mitsuyori
+              dt ID
+              dd = event.id
+              dt 名前
+              dd = event.name
   nav
     ul.pagination
       ul.pagination

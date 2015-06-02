@@ -1,7 +1,7 @@
 class Admin::EventsController < AdminController
   def index
-    @day = params[:day]
-    @events = Event.joins(:days).merge(EventDay.where(event_on: @day))
+    @events = Event.all
+    binding.pry
   end
   def new
     @event = Event.new

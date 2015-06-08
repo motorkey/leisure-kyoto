@@ -15,11 +15,15 @@ class Admin::EventsController < AdminController
   end
   def edit
     @event = Event.find(params[:id])
+    #(0..2).each do |i|
+      #if !@event.photos[i]
+        #@event.photos.build
+      #end
+    #end
   end
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
-      flash[:success] = '編集成功'
       redirect_to admin_events_path
     else
       render 'edit'

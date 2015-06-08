@@ -1,2 +1,28 @@
 h1 編集
-= render 'form'
+/= form_for @event, url: admin_events_path do |f|
+= form_for [:admin, @event] do |f|
+  .form-group
+    = f.label :name, 'Name'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :capacity, '最大人数'
+  .form-group
+    = f.label :xxx
+  .well
+    table id = 'event_photos'
+      = f.fields_for :photos do |pf|
+        tr.form-group id = 'event_photo_#{pf.object.id}'
+          td = image_tag pf.object.image.thumb.url
+          td = link_to '削除', admin_photo_path(pf.object.id), method: :delete, remote: true, class: 'btn btn-default'
+  .form-group
+    = f.label :description, 'Description'
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    .well
+      = f.submit 'アップデート', class: 'btn btn-default'
+= form_tag admin_photos_path, multipart: true do
+  .form-group
+    = hidden_field_tag 'event_id', @event.id 
+    = file_field_tag :image
+    = submit_tag '追加', class: 'btn btn-default'
+

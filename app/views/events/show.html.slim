@@ -1,1 +1,4 @@
 h1 = @event.name
+- if @event.photos[0]
+  = image_tag @event.photos[0].image.thumb.url
+p = @event.description

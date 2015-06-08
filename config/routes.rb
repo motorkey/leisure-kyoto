@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'pages#top'
     resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :photos, only: [:destroy, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

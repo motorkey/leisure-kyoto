@@ -1,0 +1,8 @@
+console.log('ok');
+
+$('#event_photos').append('
+    <tr class="form-group" id="event_photo_<%= @photo.id %>">
+      <td><%= image_tag(@photo.image.thumb.url) %></td>
+      <td><%= link_to('削除', admin_photo_path(@photo.id)) %></td>
+    </tr>
+    ');

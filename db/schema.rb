@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529021654) do
+ActiveRecord::Schema.define(version: 20150608075643) do
 
   create_table "event_days", force: :cascade do |t|
     t.date     "event_on"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20150529021654) do
   add_index "event_days", ["event_id"], name: "index_event_days_on_event_id", using: :btree
 
   create_table "event_photos", force: :cascade do |t|
-    t.integer  "event_id",   limit: 4, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "event_id",   limit: 4,                null: false
+    t.string   "image",      limit: 255, default: "", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -33,6 +34,9 @@ ActiveRecord::Schema.define(version: 20150529021654) do
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "address",     limit: 255
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
   end
 
   create_table "project_dates", force: :cascade do |t|

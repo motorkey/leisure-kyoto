@@ -1,6 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+# gmaps4rails
+###
 window.onload = ->
   handler = Gmaps.build 'Google'
   handler.buildMap {
@@ -23,3 +26,11 @@ window.onload = ->
     }])
     handler.getMap().setZoom 12
     return
+###
+
+
+# fullcalendar
+$(document).ready ->
+  $('#calendar').fullCalendar {}
+  return
+

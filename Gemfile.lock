@@ -59,6 +59,9 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
+    fullcalendar-rails (2.3.1.0)
+      jquery-rails (>= 3.1.1, < 5.0.0)
+      momentjs-rails (~> 2.8, >= 2.8.4)
     geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
@@ -82,6 +85,8 @@ GEM
     mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    momentjs-rails (2.10.2)
+      railties (>= 3.1)
     multi_json (1.11.0)
     mysql2 (0.3.18)
     nokogiri (1.6.6.2)
@@ -183,11 +188,13 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
+  fullcalendar-rails
   geocoder
   gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
+  momentjs-rails
   mysql2
   pg
   pry-byebug

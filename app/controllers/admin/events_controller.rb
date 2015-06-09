@@ -2,6 +2,9 @@ class Admin::EventsController < AdminController
   def index
     @events = Event.all
   end
+  def show
+    @event = Event.find(params[:id])
+  end
   def new
     @event = Event.new
     3.times { @event.photos.build }

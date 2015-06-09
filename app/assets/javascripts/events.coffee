@@ -4,19 +4,22 @@
 window.onload = ->
   handler = Gmaps.build 'Google'
   handler.buildMap {
-    provider: {}
+    provider:
+      disableDefaultUI: true
+      center:
+        lat: 35
+        lng: 135
     internal:
       id: 'map'
   }, ->
     markers = handler.addMarkers([{
-      'lat': 35.1814464
-      'lng': 136.906398
+      'lat': 35
+      'lng': 135
       'picture':
-        'url': 'https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png'
+        #'url': 'https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png'
+        'url': '../app/assets/images/map-pin-blue.jpg'
         'width': 36
         'height': 36
-      'infowindow': 'hello!'
     }])
-    handler.bounds.extendWith markers
-    handler.fitMapToBounds()
+    handler.getMap().setZoom 12
     return

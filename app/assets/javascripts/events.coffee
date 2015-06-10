@@ -27,10 +27,3 @@ window.onload = ->
     handler.getMap().setZoom 12
     return
 ###
-
-
-# fullcalendar
-$(document).ready ->
-  $('#calendar').fullCalendar {}
-  return
-

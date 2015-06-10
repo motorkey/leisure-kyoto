@@ -3,7 +3,10 @@ $(document).on 'ready page:load', ->
     eventSources: [
       # your event source
       {
-        url: 'sample_json_data.json'
+
+
+        # 1をidにせよ
+        url: '1.json'
         allDayDefault: true
       }
       # any other sources...

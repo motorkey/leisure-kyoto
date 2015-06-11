@@ -7,7 +7,9 @@ class EventsController < ApplicationController
   def show
     @id = params[:id]
     @event = Event.find(@id)
-    @reservation = @event.days.find_by(event_on: '2015-06-16').reservations.new
+
+    # indexから来た時はいいが、reservation#createから来ると:dayが存在しない！！
+    @reservation = @event.days.find_by(event_on: params[:day]).reservations.new
   end
 end
 

@@ -1,11 +1,11 @@
 $(document).on 'ready page:load', ->
   $calendar = $('#calendar')
-  id = $calendar.attr('name')
+  event_id = $calendar.data('event-id')
   $('#calendar').fullCalendar {
     eventSources: [
       # your event source
       {
-        url: id + '.json'
+        url: event_id + '.json'
         allDayDefault: true
         cache: true
       }

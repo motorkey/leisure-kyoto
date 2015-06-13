@@ -5,10 +5,11 @@ class EventsController < ApplicationController
     @events = Event.joins(:days).merge(EventDay.where(event_on: @day))
   end
   def show
-    @id = params[:id]
-    @event = Event.find(@id)
+    @event = Event.find(params[:id])
 
     # indexから来た時はいいが、reservation#createから来ると:dayが存在しない！！
+    #
+    # dayの情報がなくこのページに来たら、トップに飛ばすかエラー出すか、今日のイベントを適当に流すか
     @reservation = @event.days.find_by(event_on: params[:day]).reservations.new
   end
 end

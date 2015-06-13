@@ -1,6 +1,11 @@
 p When are you free?
-.btn-group role='group'
-  = link_to events_path day: '2015/6/15' 
+= form_tag events_path, method: :get
+  .form-group
+    = text_field_tag :day, '', id: 'datetimepicker', class: 'form-control'
+  .form-group
+    = submit_tag 'Search', class: 'btn btn-default'
+/.btn-group role='group'
+  = link_to events_path(day: '2015/6/15')
     button.btn.btn-default 15th June 
-  = link_to events_path day: '2015/6/16'
+  = link_to events_path(day: '2015/6/16')
     button.btn.btn-default 16th June

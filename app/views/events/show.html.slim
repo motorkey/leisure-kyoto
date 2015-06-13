@@ -7,7 +7,7 @@ p.col-sm-6
   #map
 = form_for @reservation do |f|
   = f.hidden_field :event_day_id, value: f.object.event_day_id
-  = f.hidden_field :event_id, value: @id 
+  = f.hidden_field :event_id, value: @event.id 
   .form-group
     = f.label :name, 'Name'
     = f.text_field :name, class: 'form-control'

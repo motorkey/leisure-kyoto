@@ -12,4 +12,3 @@ $(document).on 'ready page:load', ->
       # any other sources...
     ]
   }
-  return

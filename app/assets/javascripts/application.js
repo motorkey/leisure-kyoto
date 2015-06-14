@@ -19,5 +19,5 @@
 //= require gmaps_google
 //= require moment
 //= require fullcalendar
-//= require jquery.ui.all
+//= require jquery-ui/datepicker
 //= require_tree .

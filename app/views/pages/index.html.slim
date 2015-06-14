@@ -1,7 +1,7 @@
 p When are you free?
 = form_tag events_path, method: :get
   .form-group
-    = text_field_tag :day, '', id: 'datetimepicker', class: 'form-control'
+    = text_field_tag :day, '', class: 'datepicker form-control'
   .form-group
     = submit_tag 'Search', class: 'btn btn-default'
 /.btn-group role='group'

@@ -6,6 +6,6 @@ h2.text-center = @day
         .panel-body
           h1 = event.name
           div
-            - if event.photos[0]
-              = image_tag event.photos[0].image.thumb.url, class: 'img-responsive'
+            - if event.photos.first
+              = image_tag event.photos.first.image.thumb.url, class: 'img-responsive'
           p = event.description

@@ -10,6 +10,7 @@ class Admin::EventsController < AdminController
     3.times { @event.photos.build }
   end
   def create
+    # id @event.save を使ってrenderとredirectをちゃんとせよ！
     @event = Event.create(event_params)
     params[:event][:photos_attributes].each do |key, photo_attributes|
       @event.photos.create(photo_attributes.permit(:image))

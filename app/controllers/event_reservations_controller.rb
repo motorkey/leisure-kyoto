@@ -1,7 +1,10 @@
 class EventReservationsController < ApplicationController
   def create
-    EventReservation.create(event_reservation_params)
-    redirect_to pages_path
+    if EventReservation.create(event_reservation_params)
+      redirect_to pages_path
+    else
+      render 'event/show'
+    end
   end
 
   private

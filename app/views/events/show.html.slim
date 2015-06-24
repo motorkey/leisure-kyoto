@@ -13,7 +13,8 @@ p.col-sm-6
     = f.text_field :name, class: 'form-control'
   .form-group
     = f.label :number, 'Number'
-    = f.text_field :number, class: 'form-control'
+    / 3ではなくイベントごとの許容人数を設定せよ！
+    = f.select :number, Array.new(3){ |index| index + 1 }, {}, { class: 'form-control' }
   .form-group
     = f.label :mail, 'Mail'
     = f.text_field :mail, class: 'form-control'

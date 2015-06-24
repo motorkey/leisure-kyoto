@@ -3,7 +3,7 @@ class EventReservationsController < ApplicationController
     if EventReservation.create(event_reservation_params)
       redirect_to pages_path
     else
-      render 'event/show'
+      render template: 'event/show'
     end
   end
 

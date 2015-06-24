@@ -1,3 +1,6 @@
+- flash.each do |key, value|
+  .alert class="alert-#{key}"
+    = value
 p When are you free?
 = form_tag events_path, method: :get
   .form-group

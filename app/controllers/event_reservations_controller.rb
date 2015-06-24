@@ -1,9 +1,11 @@
 class EventReservationsController < ApplicationController
   def create
-    if EventReservation.create(event_reservation_params)
+    reservation = EventReservation.new(event_reservation_params)
+    if reservation.save
+      flash[:success] = "Your booking has been confirmed!"
       redirect_to pages_path
     else
-      render template: 'event/show'
+      render template: 'events/show'
     end
   end
 

@@ -53,7 +53,6 @@ production:
   encoding: utf8
   adapter: mysql2
   pool: 5
-  port: 5432
   username: motorkey
   password: strong
   database: leisure_production

@@ -55,6 +55,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  # HerokuでRailsを動かすため
   gem 'rails_12factor'
 end

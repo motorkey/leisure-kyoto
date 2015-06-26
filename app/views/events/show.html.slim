@@ -5,6 +5,7 @@ p.col-sm-6
   = @event.description
 .col-sm-6
   #map
+= render 'shared/reservation_error_messages'
 = form_for @reservation do |f|
   = f.hidden_field :event_day_id, value: f.object.event_day_id
   = f.hidden_field :event_id, value: @event.id 

@@ -51,7 +51,7 @@ test:
 #
 production:
   encoding: utf8
-  adapter: postgresql
+  adapter: mysql2
   pool: 5
   port: 5432
   username: motorkey

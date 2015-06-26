@@ -1,7 +1,8 @@
+/
+/ @reservationが動かない
+/
 - if @reservation.errors.any?
   .alert.alert-error
-    The form contains 
-    = pluralize(@reservation.errors.count, "error")
     ul
       - @reservation.errors.full_messages.each do |msg|
         li = msg

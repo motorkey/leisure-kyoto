@@ -1,7 +1,7 @@
 class EventReservationsController < ApplicationController
   def create
-    @reservation = EventReservation.new(event_reservation_params)
-    if @reservation.save
+    reservation = EventReservation.new(event_reservation_params)
+    if reservation.save
       flash[:success] = "Your booking has been confirmed!"
       redirect_to pages_path
     else

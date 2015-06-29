@@ -42,6 +42,7 @@ $(document).on 'ready page:load', ->
         $.ajax
           url: 'event_days/' + eventId
           type: 'DELETE'
+          async: false
           data:
             event_id: eventId
             event_on: isoDate

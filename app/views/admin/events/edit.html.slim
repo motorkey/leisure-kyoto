@@ -1,5 +1,7 @@
 h1 編集
-/= form_for @event, url: admin_events_path do |f|
+h3 開催日
+#calendar_set_days data-event-id = '#{@event.id}'
+h3 基本情報
 = form_for [:admin, @event] do |f|
   .form-group
     = f.label :name, 'Name'
@@ -21,8 +23,10 @@ h1 編集
     .well
       = f.submit 'アップデート', class: 'btn btn-default'
 = form_tag admin_photos_path, multipart: true do
-  .form-group
-    = hidden_field_tag 'event_id', @event.id 
-    = file_field_tag :image
-    = submit_tag '追加', class: 'btn btn-default'
+  .well
+    p 画像の追加
+    .form-group
+      = hidden_field_tag 'event_id', @event.id 
+      = file_field_tag :image
+      = submit_tag '追加', class: 'btn btn-default'
 

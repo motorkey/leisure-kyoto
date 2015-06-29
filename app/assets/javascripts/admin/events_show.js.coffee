@@ -1,7 +1,9 @@
 $(document).on 'ready page:load', ->
-  $calendar = $('#calendar')
+  $calendar = $('#calendar_show_reservations')
   event_id = $calendar.data('event-id')
-  $('#calendar').fullCalendar {
+  $calendar.fullCalendar {
+    aspectRatio: 1.0
+    eventLimit: true
     eventSources: [
       # your event source
       {

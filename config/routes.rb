@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :event_reservations, only: [:create]
   namespace :admin do
     root to: 'pages#top'
-    resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resources :event_days, only: [:create, :destroy]
+    end
     resources :photos, only: [:destroy, :create]
   end
 

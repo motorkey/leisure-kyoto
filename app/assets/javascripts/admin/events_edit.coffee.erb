@@ -25,25 +25,26 @@ $(document).on 'ready page:load', ->
     dayClick: (date, jsEvent, view) ->
       isoDate = date.format()
       m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-      #ajax実装せよ
       $day = $(this)
       if $day.css('background-color') == backgroundColor
-        $day.css 'background-color', colorActive
-        activeDate.push(isoDate)
-        $.ajax
+        $.ajax(
           url: 'event_days'
           type: 'POST'
           data:
             event_id: eventId
             event_on: isoDate
+        ).done ->
+          $day.css 'background-color', colorActive
+          activeDate.push(isoDate)
       else
-        $day.css 'background-color', backgroundColor
-        activeDate.splice($.inArray(isoDate, activeDate), 1)
-        $.ajax
+        $.ajax(
           url: 'event_days/' + eventId
           type: 'DELETE'
           async: false
           data:
             event_id: eventId
             event_on: isoDate
+        ).done ->
+          $day.css 'background-color', backgroundColor
+          activeDate.splice($.inArray(isoDate, activeDate), 1)
   }

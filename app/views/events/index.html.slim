@@ -1,4 +1,11 @@
-h2.text-center = @day
+h2.text-center
+  |Events on 
+  = @day
+= form_tag events_path, method: :get
+  .form-group
+    = text_field_tag :day, '', class: 'datepicker form-control'
+  .form-group
+    = submit_tag 'Search', class: 'btn btn-default'
 #masonry-container
   - @events.each do |event|
     .masonry-item.panel.panel-default.col-xs-6.col-sm-6.col-md-4.col-lg-3

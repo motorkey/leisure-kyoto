@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Front::EventsController < FrontController
   def index
     @day = params[:day]
     # ?????

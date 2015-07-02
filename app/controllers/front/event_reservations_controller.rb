@@ -1,4 +1,4 @@
-class EventReservationsController < ApplicationController
+class Front::EventReservationsController < FrontController
   def create
     reservation = EventReservation.new(event_reservation_params)
     if reservation.save

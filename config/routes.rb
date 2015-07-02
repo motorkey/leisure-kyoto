@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  resources :pages
-  resources :events, only: [:index, :show]
-  resources :event_reservations, only: [:create]
-  namespace :admin do
+  scope module: :front do
+    resources :events, only: [:index, :show]
+    resources :event_reservations, only: [:create]
     root to: 'pages#top'
+  end
+  namespace :admin do
     resources :events, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :event_days, only: [:create, :destroy]
     end
     resources :photos, only: [:destroy, :create]
+    root to: 'pages#top'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

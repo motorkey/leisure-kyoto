@@ -1,4 +1,4 @@
 class Front::PagesController < FrontController
-  def top 
+  def top
   end
 end

@@ -10,6 +10,7 @@ class Front::EventReservationsController < FrontController
     )
 
     # POSTでcreateにredirect_toできないためcreateアクションの処理をここに書く
+    binding.pry
     reservation = EventReservation.new(event_reservation_params)
     if reservation.save
       flash[:success] = "Your booking has been confirmed!"
@@ -17,8 +18,6 @@ class Front::EventReservationsController < FrontController
     else
       # render events/show/:id ができない！
       # てか長い！何かが問題！
-      #
-      binding.pry
       redirect_to event_path(params[:event_reservation][:event_id], day: EventDay.find(params[:event_reservation][:event_day_id]).event_on) 
     end
 

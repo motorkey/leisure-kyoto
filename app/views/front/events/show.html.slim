@@ -8,7 +8,7 @@ p.col-sm-6
 .col-sm-6
   #map
 = form_tag purchase_event_reservations_path(@reservation) do
-  = hidden_field_tag :event_day_id, value: @reservation.event_day_id
+  = hidden_field :event_reservation, :event_day_id, value: @reservation.event_day_id
   = hidden_field_tag :event_id, value: @event.id 
   .form-group
     = label :event_reservation, :name, 'Name'

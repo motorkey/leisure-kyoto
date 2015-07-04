@@ -21,3 +21,4 @@ doc/
 .idea
 .secret
 /config/database.yml
+/config/secrets.yml

@@ -20,4 +20,4 @@ doc/
 .DS_Store
 .idea
 .secret
-database.yml
+/config/database.yml

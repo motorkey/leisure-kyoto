@@ -1,7 +1,7 @@
 class Front::EventsController < FrontController
   def index
     @day = params[:day]
-    # ?????
+    # Merge?????
     @events = Event.joins(:days).merge(EventDay.where(event_on: @day))
   end
   def show

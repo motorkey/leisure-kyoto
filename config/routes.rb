@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   scope module: :front do
     resources :events, only: [:index, :show]
-    resources :event_reservations, only: [:create]
+    resources :event_reservations do
+      collection do
+        post :purchase
+      end
+    end
     root to: 'pages#top'
   end
   namespace :admin do

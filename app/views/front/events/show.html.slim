@@ -7,7 +7,23 @@ p.col-sm-6
   = @event.description
 .col-sm-6
   #map
-= form_for @reservation do |f|
+= form_tag purchase_event_reservations_path(@reservation) do
+  = hidden_field_tag :event_day_id, value: @reservation.event_day_id
+  = hidden_field_tag :event_id, value: @event.id 
+  .form-group
+    = label :event_reservation, :name, 'Name'
+    = text_field :event_reservation, :name, class: 'form-control'
+  .form-group
+    = label :event_reservation, :number, 'Number'
+    / 3ではなくイベントごとの許容人数を設定せよ！
+    = select :event_reservation, :number, Array.new(3){ |index| index + 1 }, class: 'form-control'
+  .form-group
+    = label :event_reservation, :mail, 'Mail'
+    = text_field :event_reservation, :mail, class: 'form-control'
+  .form-group
+    .well
+      = javascript_include_tag "https://checkout.webpay.jp/v2/", class: 'webpay-button', :'data-text' => 'Request to Book', :'data-submit-text' => 'Purchase', :'data-key' => "test_public_gnA8Roa4g7ZsdGAc9p1Q500i", :'data-lang' => 'ja'
+/= form_for @reservation do |f|
   = f.hidden_field :event_day_id, value: f.object.event_day_id
   = f.hidden_field :event_id, value: @event.id 
   .form-group

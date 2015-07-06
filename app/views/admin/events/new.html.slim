@@ -1,16 +1,18 @@
 h1 新規作成
-/= form_for @event, url: admin_events_path do |f|
 = form_for [:admin, @event] do |f|
   .form-group
-    = f.label :name, 'Name'
+    = f.label :name, 'イベント名'
     = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :address, '住所'
+    = f.text_field :address, class: 'form-control'
   = f.fields_for :photos do |pf|
     .form-group
-      = pf.label :image, 'Image'
+      = pf.label :image, '写真'
       .well
         = pf.file_field :image
   .form-group
-    = f.label :description, 'Description'
+    = f.label :description, 'イベント説明'
     = f.text_area :description, class: 'form-control'
   .form-group
     .well

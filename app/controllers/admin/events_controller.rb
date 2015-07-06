@@ -27,6 +27,9 @@ class Admin::EventsController < AdminController
   end
   def update
     @event = Event.find(params[:id])
+
+    binding.pry
+
     if @event.update_attributes(event_params)
       redirect_to admin_events_path
     else
@@ -36,7 +39,7 @@ class Admin::EventsController < AdminController
 
   private
     def event_params
-      params.require(:event).permit(:name, :description)
+      params.require(:event).permit(:name, :description, :address, :capacity)
     end
     #def photo_params
       #params.require(:event_photo).permit(:image)

@@ -27,9 +27,6 @@ class Admin::EventsController < AdminController
   end
   def update
     @event = Event.find(params[:id])
-
-    binding.pry
-
     if @event.update_attributes(event_params)
       redirect_to admin_events_path
     else

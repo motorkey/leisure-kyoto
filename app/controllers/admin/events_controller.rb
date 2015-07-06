@@ -11,11 +11,15 @@ class Admin::EventsController < AdminController
   end
   def create
     # id @event.save を使ってrenderとredirectをちゃんとせよ！
-    @event = Event.create(event_params)
-    params[:event][:photos_attributes].each do |key, photo_attributes|
-      @event.photos.create(photo_attributes.permit(:image))
+    @event = Event.new(event_params)
+    if @event.save
+      params[:event][:photos_attributes].each do |key, photo_attributes|
+        @event.photos.create(photo_attributes.permit(:image))
+      end
+      redirect_to admin_events_path
+    else
+      render 'new'
     end
-    redirect_to admin_events_path
   end
   def edit
     @event = Event.find(params[:id])
@@ -27,7 +31,7 @@ class Admin::EventsController < AdminController
   end
   def update
     @event = Event.find(params[:id])
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       redirect_to admin_events_path
     else
       render 'edit'

@@ -6,6 +6,10 @@ h1 新規作成
   .form-group
     = f.label :address, '住所'
     = f.text_field :address, class: 'form-control'
+  .form-group
+    = f.label :capacity, '最大定員数'
+    = f.text_field :capacity, class: 'form-control'
+  = f.fields_for :photos do |pf|
   = f.fields_for :photos do |pf|
     .form-group
       = pf.label :image, '写真'

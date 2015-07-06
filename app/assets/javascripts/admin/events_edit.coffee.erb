@@ -5,18 +5,17 @@ $(document).on 'ready page:load', ->
   eventId = $calendar.data('event-id')
   colorActive = 'lightBlue'
   activeDate = []
-  #
-  # このajaxがevents#edit以外のページでも実行されていつも404エラーが出ている！
-  #
-  $.ajax(
-    type: 'GET'
-    url: 'edit.json'
-    dataType: 'json'
-    async: false
-  ).done (data) ->
-    for x in data
-      #dayIdも得よ！
-      activeDate.push(x.event_on)
+  # calendar要素が存在するならjsonをgetする
+  if $calendar[0]
+    $.ajax(
+      type: 'GET'
+      url: 'edit.json'
+      dataType: 'json'
+      async: false
+    ).done (data) ->
+      for x in data
+        #dayIdも得よ！
+        activeDate.push(x.event_on)
   $calendar.fullCalendar {
     aspectRatio: 2
     dayRender: (date, cell) ->

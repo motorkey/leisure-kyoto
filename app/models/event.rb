@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   # ???
   accepts_nested_attributes_for :photos
-
   # Google Map
   geocoded_by :address
   after_validation :geocode

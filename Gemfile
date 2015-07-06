@@ -23,7 +23,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # Google Map
-gem 'gmaps4rails'
 gem 'geocoder'
 
 # 管理画面のカレンダー

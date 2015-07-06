@@ -6,7 +6,9 @@ h1 = @event.name
 p.col-sm-6
   = @event.description
 .col-sm-6
-  #map
+  /- content_for(:header) do
+    = javascript_include_tag 'events_show.js.coffee'
+  #map-canvas data-lat = "#{@event.latitude}" data-lng = "#{@event.longitude}" data-address = "#{@event.address}"
 = form_tag purchase_event_reservations_path(@reservation) do
   = hidden_field :event_reservation, :event_day_id, value: @reservation.event_day_id
   = hidden_field :event_reservation, :event_id, value: @event.id 

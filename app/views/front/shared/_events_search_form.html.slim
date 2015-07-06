@@ -1,0 +1,7 @@
+= form_tag events_path, method: :get
+  .form-group
+    / requiredはreadonlyに無効なのでそれ以外でvalidationせよ！
+    / readonlyのグレー色をなんとかせよ！
+    = text_field_tag :day, '', class: 'datepicker form-control', readonly: 'readonly'
+  .form-group
+    = submit_tag 'Search', class: 'btn btn-default'

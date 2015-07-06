@@ -6,7 +6,6 @@ class Front::EventsController < FrontController
   end
   def show
     @event = Event.find(params[:id])
-
     # indexから来た時はいいが、reservation#createから来ると:dayが存在しない！！
     #
     # dayの情報がなくこのページに来たら、トップに飛ばすかエラー出すか、今日のイベントを適当に流すか

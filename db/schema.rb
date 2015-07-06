@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626170212) do
+ActiveRecord::Schema.define(version: 20150706072544) do
 
   create_table "event_days", force: :cascade do |t|
     t.date     "event_on"
@@ -44,27 +44,7 @@ ActiveRecord::Schema.define(version: 20150626170212) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "address",     limit: 255
-    t.float    "latitude",    limit: 24
-    t.float    "longitude",   limit: 24
-  end
-
-  create_table "project_dates", force: :cascade do |t|
-    t.string   "date",       limit: 255
-    t.integer  "project_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "project_dates", ["project_id"], name: "index_project_dates_on_project_id", using: :btree
-
-  create_table "projects", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "pic",         limit: 255
-    t.string   "description", limit: 255
   end
 
   add_foreign_key "event_days", "events"
-  add_foreign_key "project_dates", "projects"
 end

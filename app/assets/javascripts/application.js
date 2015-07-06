@@ -16,7 +16,6 @@
 //= require bootstrap.min
 //= require masonry.pkgd.min
 //= require underscore-min
-//= require gmaps_google
 //= require moment
 //= require fullcalendar
 //= require jquery-ui/datepicker

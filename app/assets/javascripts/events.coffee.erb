@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-# gmaps4rails
+# gmaps4railsa
+###
 window.onload = ->
   handler = Gmaps.build 'Google'
   handler.buildMap {
@@ -20,10 +21,10 @@ window.onload = ->
       'picture':
 
         # 表示されないから修正せよ
-        'url': '<%= asset_path 'map_pin_blue.jpg' %>'
+        'url':
         'width': 36
         'height': 36
     }])
     handler.getMap().setZoom 12
     return
-
+###

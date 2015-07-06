@@ -1,0 +1,26 @@
+#
+# 外部ファイルでdocumet.writeは非同期にできない！
+#
+initialize = ->
+  $map = $('#map-canvas')
+  address = $map.data('address')
+  geocoder = new google.maps.Geocoder()
+  geocoder.geocode { 'address': address }, (results, status) ->
+    if status == google.maps.GeocoderStatus.OK
+      map.setCenter results[0].geometry.location
+      marker = new (google.maps.Marker)(
+        map: map
+        position: results[0].geometry.location
+      )
+    else
+      # 例外処理！
+      #alert 'Geocode was not successful for the following reason: ' + status
+  mapOptions =
+    zoom: 13
+    scrollwheel: false
+    disableDoubleClickZoom: true
+    streetViewControl: false
+    mapTypeControl: false
+    scaleControl: true
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+google.maps.event.addDomListener window, 'page:change', initialize

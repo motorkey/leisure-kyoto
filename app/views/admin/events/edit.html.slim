@@ -31,4 +31,4 @@ h3 基本情報
       = hidden_field_tag 'event_id', @event.id 
       = file_field_tag :image
       = submit_tag '追加', class: 'btn btn-default'
-
+= link_to 'このイベントを削除', admin_event_path(@event.id), method: :delete, class: 'btn btn-default'

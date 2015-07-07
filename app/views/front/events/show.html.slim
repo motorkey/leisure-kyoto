@@ -6,9 +6,8 @@ h1 = @event.name
 p.col-sm-6
   = @event.description
 .col-sm-6
-  /- content_for(:header) do
-    = javascript_include_tag 'events_show.js.coffee'
-  #map-canvas data-address = "#{@event.address}"
+  - if @event.address.present?
+    #map-canvas data-address = "#{@event.address}"
 = form_tag purchase_event_reservations_path(@reservation) do
   = hidden_field :event_reservation, :event_day_id, value: @reservation.event_day_id
   = hidden_field :event_reservation, :event_id, value: @event.id 
@@ -25,19 +24,5 @@ p.col-sm-6
   .form-group
     .well
       = javascript_include_tag "https://checkout.webpay.jp/v2/", class: 'webpay-button', :'data-text' => 'Request to Book', :'data-submit-text' => 'Purchase', :'data-key' => "test_public_gnA8Roa4g7ZsdGAc9p1Q500i", :'data-lang' => 'ja'
-/= form_for @reservation do |f|
-  = f.hidden_field :event_day_id, value: f.object.event_day_id
-  = f.hidden_field :event_id, value: @event.id 
-  .form-group
-    = f.label :name, 'Name'
-    = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :number, 'Number'
-    / 3ではなくイベントごとの許容人数を設定せよ！
-    = f.select :number, Array.new(3){ |index| index + 1 }, {}, { class: 'form-control' }
-  .form-group
-    = f.label :mail, 'Mail'
-    = f.text_field :mail, class: 'form-control'
-  .form-group
-    .well
-      = f.submit 'Request to Book', class: 'btn btn-default'
+      / こんなところにmetaタグ入れていいのか？
+      meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximun-scale=1.0, user-scalable=no'

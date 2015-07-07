@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   scope module: :front do
+    get 'about', to: 'pages#about'
+    get 'contact', to: 'pages#contact'
     resources :events, only: [:index, :show]
     resources :event_reservations do
       collection do

@@ -1,5 +1,8 @@
 - flash.each do |key, value|
   .alert class="alert-#{key}"
     = value
-p When are you free?
-= render 'front/shared/events_search_form'
+div
+  h1.text-center Book events in Kyoto online
+  h2.text-center Easy to book, safe to pay
+#search
+  = render 'front/shared/events_search_form'

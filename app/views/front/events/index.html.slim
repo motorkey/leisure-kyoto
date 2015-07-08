@@ -5,11 +5,12 @@ h2.text-center
 = render 'front/shared/events_search_form'
 #masonry-container
   - @events.each do |event|
-    .masonry-item.panel.panel-default.col-xs-6.col-sm-6.col-md-4.col-lg-3
-      = link_to event_path(event.id, day: @day) 
-        .panel-body
-          h1 = event.name
-          div
-            - if event.photos.first
-              = image_tag event.photos.first.image.thumb.url, class: 'img-responsive'
-          p = event.description
+    .masonry-item.col-xs-6.col-sm-6.col-md-4.col-lg-3
+      .panel.panel-default
+        = link_to event_path(event.id, day: @day) 
+          .panel-body
+            h1 = event.name
+            div
+              - if event.photos.first
+                = image_tag event.photos.first.image.thumb.url, class: 'img-responsive'
+            p = event.description

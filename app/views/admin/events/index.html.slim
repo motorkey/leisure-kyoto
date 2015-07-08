@@ -24,10 +24,20 @@
             = link_to '確認', admin_event_path(event.id), class: 'btn btn-default'
           td
             = link_to '編集', edit_admin_event_path(event.id), class: 'btn btn-default'
-  nav
+  /未実装！
+  /nav
     ul.pagination
-      ul.pagination
-        li.active 1
-        li 2
-        li 3
-
+      li
+        a aria-label='Previous'
+          span aria-hidden='true'
+            |&laquo;
+      li
+        a 1
+      li
+        a 2
+      li
+        a 3
+      li
+        a aria-label='Next'
+          span aria-hidden='true'
+            |&raquo;

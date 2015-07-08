@@ -13,6 +13,7 @@ class Admin::EventsController < AdminController
     # id @event.save を使ってrenderとredirectをちゃんとせよ！
     @event = Event.new(event_params)
     if @event.save
+      # photoが１枚もないのにここにきたらエラー！validationするかなんとかせよ！
       params[:event][:photos_attributes].each do |key, photo_attributes|
         @event.photos.create(photo_attributes.permit(:image))
       end

@@ -27,6 +27,8 @@ module Leisure
     config.generators.template_engine = :slim
 
     # bootstrapのフォントの読み込み
-    config.assets.paths << "#{Rails}/vender/assets/fonts"
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    # bootstrapのglyphiconsもprecompileに加える
+    config.assets.precompile += %w( *.svg *.eot *.woff *.woff2 *.ttf )
   end
 end

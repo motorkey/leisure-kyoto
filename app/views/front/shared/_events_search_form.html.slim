@@ -1,7 +1,14 @@
-= form_tag events_path, method: :get
-  .form-group
-    / requiredはreadonlyに無効なのでそれ以外でvalidationせよ！
-    / readonlyのグレー色をなんとかせよ！
-    = text_field_tag :day, '', class: 'datepicker form-control', readonly: 'readonly'
-  .form-group
-    = submit_tag 'Search', class: 'btn btn-default'
+= form_tag events_path, class: 'form-inline text-center', method: :get
+  .well
+    .form-group
+      = label_tag :day, 'Events on', class: 'sr-only'
+      .input-group
+        .input-group-addon
+          span.glyphicon.glyphicon-calendar aria-hidden='true'
+        / requiredはreadonlyに無効なのでそれ以外でvalidationせよ！
+        = text_field_tag :day, '', id: 'search-bar', class: 'datepicker form-control', placeholder: 'Events on', readonly: 'readonly'
+    .form-group
+      / bootstrapのglyphiconを使うためにsbmitではなくbuttonにしている
+      / urlのbutton=が変、なんとかせよ！
+      = button_tag class: 'btn btn-default'
+        span.glyphicon.glyphicon-search aria-hidden='true'

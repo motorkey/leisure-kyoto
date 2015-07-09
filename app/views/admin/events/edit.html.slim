@@ -1,7 +1,7 @@
 h1 編集
-h3 開催日
+h3 <br>開催日（日付クリックで自動更新）
 #calendar_set_days data-event-id = '#{@event.id}'
-h3 基本情報
+h3 <br>基本情報（修正後は更新ボタンを押すこと）
 = form_for [:admin, @event] do |f|
   .form-group
     = f.label :name, 'イベント名'
@@ -10,6 +10,9 @@ h3 基本情報
     = f.label :address, '住所'
     = f.text_field :address, class: 'form-control'
   .form-group
+    = f.label :price, '料金'
+    = f.number_field :price, class: 'form-control'
+  .form-group
     = f.label :capacity, '最大定員数'
     = f.number_field :capacity, class: 'form-control'
   .form-group
@@ -17,18 +20,21 @@ h3 基本情報
     = f.text_area :description, class: 'form-control', size: '10x20'
   .form-group
     .well
-      = f.submit '上記データを更新する', class: 'btn btn-default'
+      = f.submit '更新', class: 'btn btn-default'
+  h3 <br>写真の削除・追加
   .well
-    table id = 'event_photos'
+    table.table
       = f.fields_for :photos do |pf|
-        tr.form-group id = 'event_photo_#{pf.object.id}'
+        tr id = 'event_photo_#{pf.object.id}'
           td = image_tag pf.object.image.thumb.url
           td = link_to '削除', admin_photo_path(pf.object.id), method: :delete, remote: true, class: 'btn btn-default'
 = form_tag admin_photos_path, multipart: true do
   .well
-    p 画像の追加
+    p ※最低でも1024 × 683 px
     .form-group
       = hidden_field_tag 'event_id', @event.id 
-      = file_field_tag :image
-      = submit_tag '追加', class: 'btn btn-default'
-= link_to 'このイベントを削除', admin_event_path(@event.id), method: :delete, class: 'btn btn-default'
+    = file_field_tag :image
+    = submit_tag '選択した画像を追加', class: 'btn btn-default'
+h3 <br>イベントの削除
+.well
+  = link_to 'このイベントを削除', admin_event_path(@event.id), method: :delete, class: 'btn btn-default', data: {  confirm: '本当に削除してもよろしいですか？' }

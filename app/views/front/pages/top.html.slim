@@ -1,8 +1,9 @@
-- flash.each do |key, value|
-  .alert class="alert-#{key}"
-    = value
-div
-  h1.text-center Book events in Kyoto online
-  h2.text-center Easy to book, safe to pay
-#search
-  = render 'front/shared/events_search_form'
+.container
+  - flash.each do |key, value|
+    .alert class="alert-#{key}"
+      = value
+  div
+    h1.text-center Book events in Kyoto online
+    h2.text-center Easy to book, safe to pay
+  #search
+    = render 'front/shared/events_search_form'

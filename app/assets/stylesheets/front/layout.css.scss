@@ -1,9 +1,49 @@
+$xs: 'only screen and (max-width: 767px)';
+$event-img-height: 368px;
+
 body {
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
+.panel > a{
+  color: #333;
+  &:hover {
+    text-decoration: none;
+    color: #333;
+  }
+}
+
+.jumbotron {
+  /*background-image: url(/uploads/event_photo/image/66/IMG_7895.JPG);*/
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 1.2 * $event-img-height;
+  @media #{$xs} {
+    height: $event-img-height;
+  }
+}
+
+/*.webpay-button-container {
+  @media #{$xs} {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    #WP_checkoutBox {
+      width: 100%;
+      margin: 10px 20px;
+      input {
+        width: 100%;
+        height: 27px;
+      }
+    }
+  }
+}*/
+
+/* Google Maps API  */
 #map-canvas {
-  width: 300px;
+  width: 100%;
   height: 300px;
 }
 

@@ -1,28 +1,37 @@
 - provide(:title, 'Event')
-= render 'front/shared/reservation_error_messages'
-h1 = @event.name
 - if @event.photos[0]
-  = image_tag @event.photos[0].image.thumb.url
-p.col-sm-6
-  = @event.description
-.col-sm-6
+  .jumbotron style='background-image: url(#{@event.photos[0].image})'
+  /= image_tag @event.photos[0].image, class: 'img-responsive'
+.container
+  = render 'front/shared/reservation_error_messages'
+  h2 = @event.name
+  p
+    = @event.description
+  = form_tag purchase_event_reservations_path(@reservation) do
+    = hidden_field :event_reservation, :event_day_id, value: @reservation.event_day_id
+    = hidden_field :event_reservation, :event_id, value: @event.id 
+    .panel.panel-default
+      .panel-heading
+        |¥ 
+        = @event.price
+        |&nbsp;per person
+      .panel-body
+        .form-inline
+          .form-group
+            = label :event_reservation, :name, 'Name'
+            = text_field :event_reservation, :name, class: 'form-control'
+          .form-group
+            = label :event_reservation, :number, 'Number'
+            / 3ではなくイベントごとの許容人数を設定せよ！
+            = select :event_reservation, :number, Array.new(3){ |index| index + 1 }, class: 'form-control'
+          .form-group
+            = label :event_reservation, :mail, 'Mail'
+            = text_field :event_reservation, :mail, class: 'form-control'
+          .form-group.webpay-button-container
+            / 払い戻しとかで揉めないように確認画面挟んだほうがいい
+            / このボタン押したときにformのvalidationするように
+            = javascript_include_tag "https://checkout.webpay.jp/v2/", class: 'webpay-button', :'data-text' => 'Book Now', :'data-submit-text' => 'Purchase', :'data-key' => "test_public_gnA8Roa4g7ZsdGAc9p1Q500i", :'data-lang' => 'ja'
+            / こんなところにmetaタグ入れていいのか？
+            meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximun-scale=1.0, user-scalable=no'
   - if @event.address.present?
     #map-canvas data-address = "#{@event.address}"
-= form_tag purchase_event_reservations_path(@reservation) do
-  = hidden_field :event_reservation, :event_day_id, value: @reservation.event_day_id
-  = hidden_field :event_reservation, :event_id, value: @event.id 
-  .form-group
-    = label :event_reservation, :name, 'Name'
-    = text_field :event_reservation, :name, class: 'form-control'
-  .form-group
-    = label :event_reservation, :number, 'Number'
-    / 3ではなくイベントごとの許容人数を設定せよ！
-    = select :event_reservation, :number, Array.new(3){ |index| index + 1 }, class: 'form-control'
-  .form-group
-    = label :event_reservation, :mail, 'Mail'
-    = text_field :event_reservation, :mail, class: 'form-control'
-  .form-group
-    .well
-      = javascript_include_tag "https://checkout.webpay.jp/v2/", class: 'webpay-button', :'data-text' => 'Request to Book', :'data-submit-text' => 'Purchase', :'data-key' => "test_public_gnA8Roa4g7ZsdGAc9p1Q500i", :'data-lang' => 'ja'
-      / こんなところにmetaタグ入れていいのか？
-      meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximun-scale=1.0, user-scalable=no'

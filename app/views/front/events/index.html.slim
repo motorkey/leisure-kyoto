@@ -9,9 +9,10 @@
       .masonry-item.col-xs-6.col-sm-6.col-md-4.col-lg-3
         .panel.panel-default
           = link_to event_path(event.id, day: @day) 
-            .panel-body
-              h3 = event.name
+            .panel-img
               div
                 - if event.photos.first
-                  = image_tag event.photos.first.image.thumb.url, class: 'img-responsive'
+                  = image_tag event.photos.first.image, class: 'img-responsive'
+            .panel-body
+              h3 = event.name
               p = event.description

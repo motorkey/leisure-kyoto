@@ -22,6 +22,9 @@ gem 'therubyracer', platforms: :ruby
 gem 'carrierwave'
 gem 'mini_magick'
 
+# 画像をS3にアップするため
+gem 'fog'
+
 # Google Map
 gem 'geocoder'
 

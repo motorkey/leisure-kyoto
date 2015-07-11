@@ -1,10 +1,36 @@
 - provide(:title, 'Event')
-- if @event.photos[0]
-  .jumbotron style='background-image: url(#{@event.photos[0].image})'
-  /= image_tag @event.photos[0].image, class: 'img-responsive'
+- if @event.photos.first
+  - if @event.photos.second
+    #carousel-example-generic.carousel.slide data-ride='carousel'
+      <!-- Indicators -->
+      ol.carousel-indicators
+        - @event.photos.each_with_index do |photo, index|
+          - if index == 0
+            li.active data-target='#carousel-example-generic' data-slide-to='#{index}'
+          - else
+            li data-target='#carousel-example-generic' data-slide-to='#{index}'
+      <!-- Wrapper for slides -->
+      .carousel-inner role='listbox'
+        - @event.photos.each_with_index do |photo, index|
+          - if index == 0
+            .item.active
+              .event-bg-img style='background-image: url(#{@event.photos[index].image})'
+          - else
+            .item
+              .event-bg-img style='background-image: url(#{@event.photos[index].image})'
+      <!-- Controls -->
+      a.left.carousel-control href='#carousel-example-generic' role='button' data-slide='prev'
+        span.glyphicon.glyphicon-chevron-left aria-hidden='true'
+        span.sr-only Previous
+      a.right.carousel-control href='#carousel-example-generic' role='button' data-slide='next'
+        span.glyphicon.glyphicon-chevron-right aria-hidden='true'
+        span.sr-onlyNext
+  - else
+    .event-bg-img style='background-image: url(#{@event.photos.first.image})'
 .container
+  / エラーが出ない！
   = render 'front/shared/reservation_error_messages'
-  h2 = @event.name
+  h3 = @event.name
   p
     = @event.description
   = form_tag purchase_event_reservations_path(@reservation) do
@@ -14,7 +40,7 @@
       .panel-heading
         |¥ 
         = @event.price
-        |&nbsp;per person
+        |&nbsp;Per Person
       .panel-body
         .form-inline
           .form-group
@@ -23,15 +49,17 @@
           .form-group
             = label :event_reservation, :number, 'Number'
             / 3ではなくイベントごとの許容人数を設定せよ！
-            = select :event_reservation, :number, Array.new(3){ |index| index + 1 }, class: 'form-control'
+            = select :event_reservation, :number, Array.new(3){ |index| index + 1 }, {}, class: 'form-control'
           .form-group
-            = label :event_reservation, :mail, 'Mail'
+            = label :event_reservation, :mail, 'Email'
             = text_field :event_reservation, :mail, class: 'form-control'
           .form-group.webpay-button-container
             / 払い戻しとかで揉めないように確認画面挟んだほうがいい
             / このボタン押したときにformのvalidationするように
             = javascript_include_tag "https://checkout.webpay.jp/v2/", class: 'webpay-button', :'data-text' => 'Book Now', :'data-submit-text' => 'Purchase', :'data-key' => "test_public_gnA8Roa4g7ZsdGAc9p1Q500i", :'data-lang' => 'ja'
             / こんなところにmetaタグ入れていいのか？
+            / というか全然効いてない
             meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximun-scale=1.0, user-scalable=no'
   - if @event.address.present?
     #map-canvas data-address = "#{@event.address}"
+  /h3 Similar Events

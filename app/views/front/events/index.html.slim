@@ -10,9 +10,8 @@
         .panel.panel-default
           = link_to event_path(event.id, day: @day) 
             .panel-img
-              div
-                - if event.photos.first
-                  = image_tag event.photos.first.image, class: 'img-responsive'
+              - if event.photos.first
+                = image_tag event.photos.first.image, class: 'img-responsive'
             .panel-body
               h3 = event.name
               p = event.description

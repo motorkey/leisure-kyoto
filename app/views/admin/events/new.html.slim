@@ -7,6 +7,9 @@ h1 新規作成
     = f.label :address, '住所'
     = f.text_field :address, class: 'form-control'
   .form-group
+    = f.label :price, '料金'
+    = f.number_field :price, class: 'form-control'
+  .form-group
     = f.label :capacity, '最大定員数'
     = f.text_field :capacity, class: 'form-control'
   .form-group

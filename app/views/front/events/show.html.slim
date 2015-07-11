@@ -33,6 +33,8 @@
   h3 = @event.name
   p
     = @event.description
+  /満員の時用の処理はこれでいいのかな？
+  /- if @event.capacity - @event.reservations.sum(:number) > 0
   = form_tag purchase_event_reservations_path(@reservation) do
     = hidden_field :event_reservation, :event_day_id, value: @reservation.event_day_id
     = hidden_field :event_reservation, :event_id, value: @event.id 
@@ -48,8 +50,7 @@
             = text_field :event_reservation, :name, class: 'form-control'
           .form-group
             = label :event_reservation, :number, 'Number'
-            / 3ではなくイベントごとの許容人数を設定せよ！
-            = select :event_reservation, :number, Array.new(3){ |index| index + 1 }, {}, class: 'form-control'
+            = select :event_reservation, :number, Array.new(@event.capacity - @event.reservations.sum(:number)){ |index| index + 1 }, {}, class: 'form-control'
           .form-group
             = label :event_reservation, :mail, 'Email'
             = text_field :event_reservation, :mail, class: 'form-control'

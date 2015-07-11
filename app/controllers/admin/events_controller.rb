@@ -17,8 +17,11 @@ class Admin::EventsController < AdminController
       params[:event][:photos_attributes].each do |key, photo_attributes|
         @event.photos.create(photo_attributes.permit(:image))
       end
+      #if @event.photos.createが全てtrue、なら成功のflash、redirectするように変更せよ！
+      #成功のflashを作れ！
       redirect_to admin_events_path
     else
+      #失敗のflashを作れ！
       render 'new'
     end
   end

@@ -59,7 +59,7 @@
             / このボタン押したときにformのvalidationするように
             = javascript_include_tag "https://checkout.webpay.jp/v2/", class: 'webpay-button', :'data-text' => 'Book Now', :'data-submit-text' => 'Purchase', :'data-key' => "test_public_gnA8Roa4g7ZsdGAc9p1Q500i", :'data-lang' => 'ja'
             / こんなところにmetaタグ入れていいのか？
-            / というか全然効いてない
+            / というかturbolinksのせいで後付けのmetaタグが全然効かない
             meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximun-scale=1.0, user-scalable=no'
   - if @event.address.present?
     #map-canvas data-address = "#{@event.address}"

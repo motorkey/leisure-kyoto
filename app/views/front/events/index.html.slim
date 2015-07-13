@@ -8,10 +8,10 @@
     - @events.each do |event|
       .masonry-item.col-xs-6.col-sm-6.col-md-4.col-lg-3
         .panel.panel-default
-          = link_to event_path(event.id, day: @day) 
+          = link_to event_path(event.id, day: @day), :'data-no-turbolink' => true
             .panel-img
               - if event.photos.first
                 = image_tag event.photos.first.image, class: 'img-responsive'
             .panel-body
               h3 = event.name
-              p = event.description
+              p = "#{event.description[0, 15]} ..."

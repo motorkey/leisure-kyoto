@@ -3,16 +3,13 @@ $ ->
   $('.carousel').carousel
     interval: false
 
-# Static Maps API
-###
-$(window).on 'load resize', ->
-  w = $(window).width() - 30
-  $('#map img').attr 'src', "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=#{w}x648&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284"
-###
-#
-# 外部ファイルのdocumet.writeは非同期にできない！
-#
-initialize = ->
+  # Static Maps API
+  ###
+  $(window).on 'load resize', ->
+    w = $(window).width() - 30
+    $('#map img').attr 'src', "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=#{w}x648&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284"
+  ###
+
   if document.google == undefined
     $map = $('#map-canvas')
     address = $map.data('address')
@@ -35,5 +32,3 @@ initialize = ->
       else
         # 例外処理！
         #alert 'Geocode was not successful for the following reason: ' + status
-$(document).ready initialize
-$(document).on('page:load', initialize)

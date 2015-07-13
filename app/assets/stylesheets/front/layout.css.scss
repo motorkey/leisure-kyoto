@@ -13,6 +13,10 @@ body {
   padding-bottom: $footer-height;
 }
 
+.ui-datepicker {
+  z-index: 2000 !important;
+}
+
 .masonry-item {
   a {
     color: #333;

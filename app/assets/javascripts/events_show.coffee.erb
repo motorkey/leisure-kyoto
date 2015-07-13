@@ -3,29 +3,37 @@ $ ->
   $('.carousel').carousel
     interval: false
 
+# Static Maps API
+###
+$(window).on 'load resize', ->
+  w = $(window).width() - 30
+  $('#map img').attr 'src', "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=#{w}x648&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284"
+###
 #
 # 外部ファイルのdocumet.writeは非同期にできない！
 #
 initialize = ->
-  $map = $('#map-canvas')
-  address = $map.data('address')
-  geocoder = new google.maps.Geocoder()
-  geocoder.geocode { 'address': address }, (results, status) ->
-    if status == google.maps.GeocoderStatus.OK
-      map.setCenter results[0].geometry.location
-      marker = new (google.maps.Marker)(
-        map: map
-        position: results[0].geometry.location
-      )
-    else
-      # 例外処理！
-      #alert 'Geocode was not successful for the following reason: ' + status
-  mapOptions =
-    zoom: 13
-    scrollwheel: false
-    disableDoubleClickZoom: true
-    streetViewControl: false
-    mapTypeControl: false
-    scaleControl: true
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
-google.maps.event.addDomListener window, 'page:change', initialize
+  if document.google == undefined
+    $map = $('#map-canvas')
+    address = $map.data('address')
+    mapOptions =
+      zoom: 14
+      scrollwheel: false
+      disableDoubleClickZoom: true
+      streetViewControl: false
+      mapTypeControl: false
+      scaleControl: true
+    geocoder = new google.maps.Geocoder()
+    geocoder.geocode { 'address': address }, (results, status) ->
+      if status == google.maps.GeocoderStatus.OK
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+        map.setCenter(results[0].geometry.location)
+        marker = new (google.maps.Marker)(
+          map: map
+          position: results[0].geometry.location
+        )
+      else
+        # 例外処理！
+        #alert 'Geocode was not successful for the following reason: ' + status
+$(document).ready initialize
+$(document).on('page:load', initialize)

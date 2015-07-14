@@ -4,7 +4,7 @@
     |Events on 
     = @day
   = render 'front/shared/events_search_form'
-  #masonry-container
+  #masonry-container.row
     - @events.each do |event|
       .masonry-item.col-xs-6.col-sm-6.col-md-4.col-lg-3
         .panel.panel-default

@@ -1,4 +1,4 @@
-$(document).on 'ready page:load', ->
+$ ->
   $calendar = $('#calendar_set_days')
   backgroundColor = $calendar.css('background-color')
   $('.fc-today').css 'background-color', backgroundColor
@@ -16,7 +16,7 @@ $(document).on 'ready page:load', ->
       for x in data
         #dayIdも得よ！
         activeDate.push(x.event_on)
-  $calendar.fullCalendar {
+  $calendar.fullCalendar
     aspectRatio: 2
     dayRender: (date, cell) ->
       isoDate = date.format()
@@ -49,4 +49,3 @@ $(document).on 'ready page:load', ->
         ).done ->
           $day.css 'background-color', backgroundColor
           activeDate.splice($.inArray(isoDate, activeDate), 1)
-  }

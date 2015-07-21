@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721135231) do
+ActiveRecord::Schema.define(version: 20150721183058) do
 
   create_table "event_days", force: :cascade do |t|
     t.date     "event_on"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20150721135231) do
     t.integer  "event_id",     limit: 4
   end
 
+  add_index "event_reservations", ["mail", "event_day_id"], name: "index_event_reservations_on_mail_and_event_day_id", unique: true, using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "description", limit: 255
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(version: 20150721135231) do
     t.integer  "price",       limit: 4
     t.string   "author",      limit: 255
   end
+
+  add_index "events", ["name"], name: "index_events_on_name", unique: true, using: :btree
 
   create_table "managers", force: :cascade do |t|
     t.string   "name",            limit: 255

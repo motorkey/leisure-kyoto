@@ -8,7 +8,7 @@ class EventReservation < ActiveRecord::Base
   #
   # numberは残りの参加人図で上限を決めること！
   #
-  validates :number, presence: true
+  validates :number, presence: true, numericality: { only_integer: true, greater_than: 0 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :mail, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { scope: [:event_day_id] }
 end

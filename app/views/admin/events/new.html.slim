@@ -1,5 +1,6 @@
 h1 新規作成
 = form_for [:admin, @event] do |f|
+  = f.hidden_field :author, value: @manager.name
   .form-group
     = f.label :name, 'イベント名'
     = f.text_field :name, class: 'form-control'

@@ -8,6 +8,7 @@ class Admin::EventsController < AdminController
   def new
     @event = Event.new
     3.times { @event.photos.build }
+    @manager = Manager.find(session[:manager_id])
   end
   def create
     # id @event.save を使ってrenderとredirectをちゃんとせよ！
@@ -45,7 +46,6 @@ class Admin::EventsController < AdminController
   end
   private
     def event_params
-      params.require(:event).permit(:name, :description, :address, :capacity, :price)
+      params.require(:event).permit(:name, :description, :address, :capacity, :price, :author)
     end
 end
-

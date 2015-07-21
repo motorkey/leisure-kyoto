@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721105558) do
+ActiveRecord::Schema.define(version: 20150721135231) do
 
   create_table "event_days", force: :cascade do |t|
     t.date     "event_on"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150721105558) do
     t.string   "address",     limit: 255
     t.integer  "capacity",    limit: 4
     t.integer  "price",       limit: 4
+    t.string   "author",      limit: 255
   end
 
   create_table "managers", force: :cascade do |t|

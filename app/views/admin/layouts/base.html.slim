@@ -21,8 +21,9 @@ html
           .logo.navbar-header.pull-left
             = link_to '管理画面', admin_root_path, class: 'navbar-brand'
           ul.navMenu.nav.navbar-nav.navbar-right.pull-right
-            li
-              /p ログアウト
+            - if signed_in?
+              li
+                = link_to 'ログアウト', admin_sign_out_path, method: :delete
         .container
           .row
             .col-sm-2
@@ -31,4 +32,7 @@ html
                 = link_to 'イベント追加', new_admin_event_path, class: 'list-group-item'
                 = link_to 'イベント一覧', admin_events_path, class: 'list-group-item'
             .col-sm-10
+              - flash.each do |key, value|
+                .alert class="alert-#{key}" role='alert'
+                  = value
               = yield

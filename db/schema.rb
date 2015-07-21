@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709035212) do
+ActiveRecord::Schema.define(version: 20150721105558) do
 
   create_table "event_days", force: :cascade do |t|
     t.date     "event_on"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20150709035212) do
     t.integer  "capacity",    limit: 4
     t.integer  "price",       limit: 4
   end
+
+  create_table "managers", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "remember_token",  limit: 255
+  end
+
+  add_index "managers", ["email"], name: "index_managers_on_email", unique: true, using: :btree
+  add_index "managers", ["remember_token"], name: "index_managers_on_remember_token", using: :btree
 
   add_foreign_key "event_days", "events"
 end
